@@ -13,12 +13,16 @@ only the marketplace listing, so one registration covers all of them.
 
 Then `/plugin marketplace update voyvodka` to pick up new entries.
 
+Each entry resolves to a subdirectory of the plugin's own repository, so a plugin whose repository
+is not published yet will fail to install from this catalog until it is. The table below says
+which are live.
+
 ## Plugins
 
-| Plugin | What it does | Source |
-|---|---|---|
-| **project** | Carries a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into documents, scaffold AI tooling, then build in increments. | [claude-project-flow](https://github.com/voyvodka/claude-project-flow) |
-| **web-launcher** | Diagnoses why a live site is not indexed, fixes it, and verifies the fix. Also covers discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries the date it was verified and the source it came from. | [web-launcher](https://github.com/voyvodka/web-launcher) |
+| Plugin | What it does | Source | Status |
+|---|---|---|---|
+| **project** | Carries a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into documents, scaffold AI tooling, then build in increments. | [claude-project-flow](https://github.com/voyvodka/claude-project-flow) | live |
+| **web-launcher** | Diagnoses why a live site is not indexed, fixes it, and verifies the fix. Also covers discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries the date it was verified and the source it came from. | [web-launcher](https://github.com/voyvodka/web-launcher) | not published yet |
 
 ## Why a separate catalog
 
