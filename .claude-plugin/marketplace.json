@@ -1,0 +1,39 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "voyvodka",
+  "description": "Claude Code plugins by voyvodka. Each plugin lives in its own repository; this catalog lists them so one marketplace registration covers all of them.",
+  "owner": {
+    "name": "voyvodka",
+    "url": "https://github.com/voyvodka"
+  },
+  "plugins": [
+    {
+      "name": "project",
+      "description": "Carry a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into docs, scaffold AI tooling, then build in increments",
+      "author": {
+        "name": "voyvodka",
+        "url": "https://github.com/voyvodka"
+      },
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/voyvodka/claude-project-flow.git",
+        "path": "plugins/project"
+      }
+    },
+    {
+      "name": "web-launcher",
+      "description": "Diagnose why a live site is not indexed, fix it, and verify the fix — plus discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries its verification date and source.",
+      "author": {
+        "name": "voyvodka",
+        "url": "https://github.com/voyvodka"
+      },
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/voyvodka/web-launcher.git",
+        "path": "plugins/web-launcher"
+      }
+    }
+  ]
+}
