@@ -7,7 +7,7 @@ only the marketplace listing, so one registration covers all of them.
 
 ```
 /plugin marketplace add voyvodka/claude-plugins
-/plugin install project@voyvodka
+/plugin install project-flow@voyvodka
 /plugin install web-launcher@voyvodka
 ```
 
@@ -23,11 +23,15 @@ Each entry resolves to a subdirectory of the plugin's own repository.
 
 | Plugin | What it does | Source |
 |---|---|---|
-| **project** | Carry a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into docs, scaffold AI tooling, then build in increments | [claude-project-flow](https://github.com/voyvodka/claude-project-flow) |
+| **project-flow** | Carry a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into docs, scaffold AI tooling, then build in increments | [claude-project-flow](https://github.com/voyvodka/claude-project-flow) |
 | **web-launcher** | Diagnose why a live site is not indexed, fix it, and verify the fix — plus discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries its verification date and source. | [web-launcher](https://github.com/voyvodka/web-launcher) |
 
 The wording above is copied from `marketplace.json` verbatim, so what this table says is exactly
 what `/plugin` shows. Change one and change the other.
+
+> **`project` was renamed to `project-flow` in 3.0.0.** The catalog carries a `renames` entry, so
+> Claude Code v2.1.193+ rewrites your settings and tells you it did. The source is remote, so expect
+> one `plugin-cache-miss` and a single `/plugin install`.
 
 ## Why a separate catalog
 
