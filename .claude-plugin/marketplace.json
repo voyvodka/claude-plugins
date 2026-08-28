@@ -1,5 +1,5 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "voyvodka",
   "description": "Claude Code plugins by voyvodka. Each plugin lives in its own repository; this catalog lists them so one marketplace registration covers all of them.",
   "owner": {
