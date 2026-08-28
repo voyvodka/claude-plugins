@@ -8,6 +8,19 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-08-28
+
+### Added
+
+- CI also asserts that the `name` in each source's `plugin.json` matches the name the catalog
+  declares. The version and ref were already checked three ways; the name was not, so a rename that
+  updated the manifest and not the catalog — or the reverse — would have passed.
+
+### Fixed
+
+- The v1.1.0 changes had no version heading of their own and sat under `[2.0.0]`, which claimed the
+  tag-pinning work shipped in 2.0.0 when it shipped a release earlier. Split apart.
+
 ## [2.0.0] - 2026-08-28
 
 ### Changed
@@ -23,11 +36,13 @@ its own repository.
   what makes the old name resolvable at all.
 - The entry now points at `plugins/project-flow` at `ref: v3.0.0`.
 
+## [1.1.0] - 2026-08-28
+
 ### Changed
 
-- **Both plugins are now pinned to a release tag** (`ref: v2.8.0`, `ref: v0.3.0`) instead of
-  resolving against whatever `main` happened to be at install time. Installing during a push, or
-  during a half-finished change, previously produced whatever HEAD was at that moment.
+- **Both plugins are now pinned to a release tag** (at the time, `ref: v2.8.0` and `ref: v0.3.0`)
+  instead of resolving against whatever `main` happened to be at install time. Installing during a
+  push, or during a half-finished change, previously produced whatever HEAD was at that moment.
   **This adds a release step**: after tagging a plugin, bump its `version` and `ref` here and merge,
   or the new release does not reach anyone.
 
@@ -58,7 +73,8 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/voyvodka/claude-plugins/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/voyvodka/claude-plugins/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/voyvodka/claude-plugins/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/voyvodka/claude-plugins/releases/tag/v1.0.0
