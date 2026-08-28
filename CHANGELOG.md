@@ -8,6 +8,15 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-08-28
+
+### Changed
+
+- Pinned to `project-flow` v3.0.1 and `web-launcher` v0.3.1. Both are patch releases fixing checks
+  and instructions that could pass or mislead; pinning means they do not reach anyone until this
+  bump merges, which is the cost the pinning change accepted and the reason the CI version check
+  exists.
+
 ## [2.0.1] - 2026-08-28
 
 ### Added
@@ -73,7 +82,8 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/voyvodka/claude-plugins/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/voyvodka/claude-plugins/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/voyvodka/claude-plugins/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/voyvodka/claude-plugins/compare/v1.0.0...v1.1.0
