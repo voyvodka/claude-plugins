@@ -13,6 +13,10 @@ only the marketplace listing, so one registration covers all of them.
 
 Then `/plugin marketplace update voyvodka` to pick up new entries.
 
+Each entry is pinned to a release tag, so an update gives you a version that was tagged and
+released, not whatever `main` held at that moment. CI clones every source at its pinned ref and
+validates the plugin there, so a broken `path` fails here rather than at install time.
+
 Each entry resolves to a subdirectory of the plugin's own repository.
 
 ## Plugins

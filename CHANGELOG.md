@@ -8,6 +8,22 @@ its own repository.
 
 ## [Unreleased]
 
+### Changed
+
+- **Both plugins are now pinned to a release tag** (`ref: v2.8.0`, `ref: v0.3.0`) instead of
+  resolving against whatever `main` happened to be at install time. Installing during a push, or
+  during a half-finished change, previously produced whatever HEAD was at that moment.
+  **This adds a release step**: after tagging a plugin, bump its `version` and `ref` here and merge,
+  or the new release does not reach anyone.
+
+### Added
+
+- CI now clones each `git-subdir` source at its pinned ref, checks the `path` exists, runs
+  `claude plugin validate --strict` inside it, and asserts three-way version agreement between the
+  tag, the catalog entry and the plugin's own `plugin.json`. Validating this repo's manifest said
+  nothing about whether the plugins it points at still existed — a renamed or deleted `path` would
+  have kept CI green until a user hit the broken install.
+
 ## [1.0.0] - 2026-08-28
 
 ### Added
