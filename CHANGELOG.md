@@ -8,6 +8,21 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-08-28
+
+### Changed
+
+- **`project` is renamed to `project-flow`.** BREAKING for anyone with the old name in
+  `enabledPlugins`: install is now `/plugin install project-flow@voyvodka`. A top-level `renames`
+  entry maps the old name to the new one, so Claude Code v2.1.193+ rewrites user, project and local
+  settings automatically and reports the change. The source is remote, so expect one
+  `plugin-cache-miss` and a single `/plugin install`. Older Claude Code reports `plugin-not-found`
+  for the old name.
+
+  `renames` is append-only history — the entry stays even after everyone has migrated, because it is
+  what makes the old name resolvable at all.
+- The entry now points at `plugins/project-flow` at `ref: v3.0.0`.
+
 ### Changed
 
 - **Both plugins are now pinned to a release tag** (`ref: v2.8.0`, `ref: v0.3.0`) instead of
@@ -43,5 +58,7 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/voyvodka/claude-plugins/compare/v1.1.0...v2.0.0
+[1.1.0]: https://github.com/voyvodka/claude-plugins/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/voyvodka/claude-plugins/releases/tag/v1.0.0
