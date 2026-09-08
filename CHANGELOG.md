@@ -8,6 +8,28 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.1.1] - 2026-09-08
+
+### Added
+
+- Each entry now carries `license`, `homepage`, `repository` and `keywords`, and is marked
+  `strict`. The catalog is the surface `/plugin` browses and searches, and it was carrying only a
+  name, a description and a source — so a search for "seo" or "planning" matched neither plugin
+  even though both manifests have listed those keywords all along. `strict` makes an entry require
+  the plugin manifest to be present at the pinned ref rather than installing whatever is at that
+  path.
+- CI compares the description, licence and keywords in each catalog entry against the `plugin.json`
+  it resolves to. Those fields are now stated in two repositories, which is exactly how one goes
+  stale — the copy is checked rather than trusted, the same way the name and version already were.
+- CI checks the changelog's structure: no section heading twice inside one version block, only
+  Keep a Changelog section names, an `[Unreleased]` section, and one dated heading per version.
+  Both listed plugins shipped a release block holding the same entries twice; this catalog had not,
+  and the check is here so that stays true rather than being luck.
+
+### Changed
+
+- Pinned to `project-flow` v3.0.2 and `web-launcher` v0.3.2.
+
 ## [2.1.0] - 2026-08-28
 
 ### Changed

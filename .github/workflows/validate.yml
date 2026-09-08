@@ -60,6 +60,28 @@ jobs:
             if [ "$declared" != "$version" ]; then
               echo "::error::$name: catalog says version $version, plugin.json at $ref says $declared"; fail=1
             fi
+            # The catalog restates description, license and keywords so `/plugin` can show and
+            # search them without cloning. That is the same fact in two repositories, which is how
+            # one goes stale — so the copy is checked rather than trusted.
+            #
+            # Heredoc body sits at the run-block base indent, not the loop's: `run: |` strips only
+            # the block's common indentation, so an indented body reaches python still indented and
+            # dies with IndentationError.
+          python3 - "$manifest" "$name" <<'PY' || fail=1
+          import json, sys
+          manifest, name = sys.argv[1], sys.argv[2]
+          m = json.load(open(manifest))
+          e = next(p for p in json.load(open('.claude-plugin/marketplace.json'))['plugins']
+                   if p['name'] == name)
+          bad = 0
+          for f in ('description', 'license', 'keywords'):
+              if f in e and e[f] != m.get(f):
+                  print(f"::error::{name}: catalog {f} differs from plugin.json at the pinned ref")
+                  print(f"  catalog:     {e[f]!r}")
+                  print(f"  plugin.json: {m.get(f)!r}")
+                  bad = 1
+          sys.exit(bad)
+          PY
             if [ "$ref" != "v$declared" ]; then
               echo "::error::$name: ref is $ref but plugin.json version is $declared — tag and version disagree"; fail=1
             fi
@@ -67,3 +89,50 @@ jobs:
           done < /tmp/entries
 
           exit $fail
+
+      # Two releases shipped a version block holding the same fixes twice, under two `### Fixed`
+      # headings, because separate PRs each appended to `[Unreleased]` and the release stamped both
+      # without merging them. Reading the file is what caught it, months later. A duplicated heading
+      # is mechanically detectable, so it is checked rather than trusted.
+      - name: Changelog structure
+        run: |
+          python3 - <<'PY'
+          import re, sys
+
+          lines = open('CHANGELOG.md').read().split('\n')
+          errors, versions, cur, seen = [], [], None, set()
+          ORDER = ['Added', 'Changed', 'Deprecated', 'Removed', 'Fixed', 'Security']
+
+          for n, line in enumerate(lines, 1):
+              if line.startswith('## '):
+                  cur, seen = line[3:].strip(), set()
+                  versions.append((n, cur))
+              elif line.startswith('### '):
+                  h = line[4:].strip()
+                  if h in seen:
+                      errors.append(f"line {n}: '{h}' appears twice under '{cur}' — "
+                                    "merge the two blocks into one")
+                  seen.add(h)
+                  if h not in ORDER:
+                      errors.append(f"line {n}: '{h}' is not a Keep a Changelog section "
+                                    f"({', '.join(ORDER)})")
+
+          names = [v for _, v in versions]
+          if '[Unreleased]' not in names:
+              errors.append("no '## [Unreleased]' section — the next change has nowhere to land, "
+                            "which is how entries end up appended to an already-released block")
+
+          released = [(n, v) for n, v in versions if v != '[Unreleased]']
+          for n, v in released:
+              if not re.match(r'^\[\d+\.\d+\.\d+\] - \d{4}-\d{2}-\d{2}$', v):
+                  errors.append(f"line {n}: '{v}' is not '[x.y.z] - YYYY-MM-DD'")
+
+          nums = [re.match(r'^\[([^\]]+)\]', v).group(1) for _, v in released]
+          for d in sorted({n for n in nums if nums.count(n) > 1}):
+              errors.append(f"version {d} has more than one heading — one version, one block")
+
+          for e in errors:
+              print(f"::error file=CHANGELOG.md::{e}")
+          print(f"checked {len(versions)} version blocks: {'FAIL' if errors else 'ok'}")
+          sys.exit(1 if errors else 0)
+          PY
