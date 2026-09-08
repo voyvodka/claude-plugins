@@ -15,13 +15,24 @@
         "url": "https://github.com/voyvodka"
       },
       "category": "development",
+      "license": "MIT",
+      "homepage": "https://github.com/voyvodka/claude-project-flow",
+      "repository": "https://github.com/voyvodka/claude-project-flow",
+      "keywords": [
+        "project-management",
+        "planning",
+        "research",
+        "documentation",
+        "scaffolding"
+      ],
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/claude-project-flow.git",
         "path": "plugins/project-flow",
-        "ref": "v3.0.1"
+        "ref": "v3.0.2"
       },
-      "version": "3.0.1"
+      "version": "3.0.2",
+      "strict": true
     },
     {
       "name": "web-launcher",
@@ -31,13 +42,25 @@
         "url": "https://github.com/voyvodka"
       },
       "category": "development",
+      "license": "MIT",
+      "homepage": "https://github.com/voyvodka/web-launcher",
+      "repository": "https://github.com/voyvodka/web-launcher",
+      "keywords": [
+        "seo",
+        "search-console",
+        "discoverability",
+        "geo",
+        "cloudflare-workers",
+        "site-audit"
+      ],
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/web-launcher.git",
         "path": "plugins/web-launcher",
-        "ref": "v0.3.1"
+        "ref": "v0.3.2"
       },
-      "version": "0.3.1"
+      "version": "0.3.2",
+      "strict": true
     }
   ],
   "renames": {
