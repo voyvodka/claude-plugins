@@ -29,9 +29,9 @@
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/claude-project-flow.git",
         "path": "plugins/project-flow",
-        "ref": "v3.0.2"
+        "ref": "v3.0.3"
       },
-      "version": "3.0.2",
+      "version": "3.0.3",
       "strict": true
     },
     {
@@ -57,9 +57,9 @@
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/web-launcher.git",
         "path": "plugins/web-launcher",
-        "ref": "v0.3.2"
+        "ref": "v0.3.3"
       },
-      "version": "0.3.2",
+      "version": "0.3.3",
       "strict": true
     }
   ],
