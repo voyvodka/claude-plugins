@@ -8,6 +8,28 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.1.2] - 2026-09-25
+
+### Added
+
+- CI checks the changelog's link footer: every released version needs a `[x.y.z]: <url>` ref, and
+  `[Unreleased]` must compare from the newest release. 2.1.1 shipped with no ref of its own and with
+  `[Unreleased]` still comparing from 2.1.0; both listed plugins had the same drift, and nothing
+  caught it in any of the three repositories.
+
+### Changed
+
+- Pinned to `project-flow` v3.0.3 and `web-launcher` v0.3.3.
+
+### Fixed
+
+- The link footer is repaired: `[2.1.1]` added, `[Unreleased]` compares from the newest release.
+- 2.1.1 described `strict` as making an entry "require the plugin manifest to be present at the
+  pinned ref". That is not what it does. `strict: true` is the default and makes `plugin.json` the
+  authority, with any component fields in the catalog entry merged into it; `strict: false` makes
+  the entry the whole definition and fails the load if the manifest also declares components.
+  Neither entry declares components, so the flag states the default rather than adding a guarantee.
+
 ## [2.1.1] - 2026-09-08
 
 ### Added
@@ -104,7 +126,9 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.2...HEAD
+[2.1.2]: https://github.com/voyvodka/claude-plugins/compare/v2.1.1...v2.1.2
+[2.1.1]: https://github.com/voyvodka/claude-plugins/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/voyvodka/claude-plugins/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/voyvodka/claude-plugins/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/voyvodka/claude-plugins/compare/v1.1.0...v2.0.0
