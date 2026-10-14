@@ -7,7 +7,7 @@ only the marketplace listing, so one registration covers all of them.
 
 ```
 /plugin install project-flow --marketplace voyvodka/claude-plugins
-/plugin install web-launcher --marketplace voyvodka/claude-plugins
+/plugin install site-triage --marketplace voyvodka/claude-plugins
 ```
 
 The first line adds this catalog and installs the plugin in one command; the second reuses the catalog
@@ -17,7 +17,7 @@ it added. That form needs Claude Code 2.1.275 or later (from the shell, `claude 
 ```
 /plugin marketplace add voyvodka/claude-plugins
 /plugin install project-flow@voyvodka
-/plugin install web-launcher@voyvodka
+/plugin install site-triage@voyvodka
 ```
 
 Then `/plugin marketplace update voyvodka` to pick up new entries.
@@ -33,7 +33,7 @@ Each entry resolves to a subdirectory of the plugin's own repository.
 | Plugin | What it does | Source |
 |---|---|---|
 | **project-flow** | Carry a project from a rough idea to shipped code through six approval-gated phases: detect state, interrogate the idea, research market and stack, lock decisions into docs, scaffold AI tooling, then build in increments | [claude-project-flow](https://github.com/voyvodka/claude-project-flow) |
-| **web-launcher** | Diagnose why a live site is not indexed, fix it, and verify the fix — plus discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries its verification date and source. | [web-launcher](https://github.com/voyvodka/web-launcher) |
+| **site-triage** | Diagnose why a live site is not indexed, fix it, and verify the fix — plus discoverability scaffolding, Cloudflare Workers deployment, and repository hardening. Every technical claim carries its verification date and source. | [site-triage](https://github.com/voyvodka/site-triage) |
 
 The wording above is copied from `marketplace.json` verbatim, so what this table says is exactly
 what `/plugin` shows. Change one and change the other.
