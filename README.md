@@ -10,7 +10,7 @@ only the marketplace listing, so one registration covers all of them.
 /plugin install web-launcher --marketplace voyvodka/claude-plugins
 ```
 
-The first line adds this catalog and installs the plugin in one step; the second reuses the catalog
+The first line adds this catalog and installs the plugin in one command; the second reuses the catalog
 it added. That form needs Claude Code 2.1.275 or later (from the shell, `claude plugin install …
 --marketplace …` needs 2.1.292). On an older version, register the catalog first:
 
