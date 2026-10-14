@@ -8,6 +8,17 @@ its own repository.
 
 ## [Unreleased]
 
+## [2.1.4] - 2026-10-14
+
+### Changed
+
+- README leads with the one-step install, `/plugin install <name> --marketplace
+  voyvodka/claude-plugins` (Claude Code 2.1.275 or later), and keeps the two-step form for older
+  versions.
+- CI: `actions/setup-node` pinned to v7.1.0.
+- Pinned to `project-flow` v3.1.1.
+- Pinned to `web-launcher` v0.4.0.
+
 ## [2.1.3] - 2026-09-25
 
 ### Changed
@@ -132,7 +143,8 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.3...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.4...HEAD
+[2.1.4]: https://github.com/voyvodka/claude-plugins/compare/v2.1.3...v2.1.4
 [2.1.3]: https://github.com/voyvodka/claude-plugins/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/voyvodka/claude-plugins/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/voyvodka/claude-plugins/compare/v2.1.0...v2.1.1
