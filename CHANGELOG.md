@@ -8,6 +8,17 @@ its own repository.
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-14
+
+### Changed
+
+- **`web-launcher` is renamed to `site-triage`.** BREAKING for anyone with the old name in
+  `enabledPlugins`: install is now `/plugin install site-triage@voyvodka`. A `renames` entry maps
+  the old name to the new one, so Claude Code v2.1.193+ rewrites user, project and local settings
+  automatically and reports the change; expect one `plugin-cache-miss` and a single
+  `/plugin install`. Older Claude Code reports `plugin-not-found` for the old name.
+- The entry now points at `voyvodka/site-triage`, `plugins/site-triage`, `ref: v1.0.0`.
+
 ## [2.1.4] - 2026-10-14
 
 ### Changed
@@ -143,7 +154,8 @@ its own repository.
 - The plugin table in the README was a hand-written paraphrase of `marketplace.json` and had
   already drifted from it. It now quotes the manifest verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v2.1.4...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/voyvodka/claude-plugins/compare/v2.1.4...v3.0.0
 [2.1.4]: https://github.com/voyvodka/claude-plugins/compare/v2.1.3...v2.1.4
 [2.1.3]: https://github.com/voyvodka/claude-plugins/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/voyvodka/claude-plugins/compare/v2.1.1...v2.1.2
