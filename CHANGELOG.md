@@ -8,6 +8,13 @@ its own repository.
 
 ## [Unreleased]
 
+### Changed
+
+- README leads with the one-step install, `/plugin install <name> --marketplace
+  voyvodka/claude-plugins` (Claude Code 2.1.275 or later), and keeps the two-step form for older
+  versions.
+- CI: `actions/setup-node` pinned to v7.1.0.
+
 ## [2.1.3] - 2026-09-25
 
 ### Changed
