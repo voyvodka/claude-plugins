@@ -29,9 +29,9 @@
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/claude-project-flow.git",
         "path": "plugins/project-flow",
-        "ref": "v3.1.1"
+        "ref": "v3.2.0"
       },
-      "version": "3.1.1",
+      "version": "3.2.0",
       "strict": true
     },
     {
