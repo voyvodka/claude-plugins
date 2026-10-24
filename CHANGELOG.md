@@ -8,6 +8,12 @@ its own repository.
 
 ## [Unreleased]
 
+## [3.0.2] - 2026-10-24
+
+### Changed
+
+- Pinned to `project-flow` v3.2.0 (#13)
+
 ## [3.0.1] - 2026-10-24
 
 ### Changed
@@ -119,7 +125,8 @@ its own repository.
 - `$schema` in `marketplace.json` now points at the SchemaStore entry instead of a marketing page.
 - The README plugin table now quotes `marketplace.json` verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v3.0.2...HEAD
+[3.0.2]: https://github.com/voyvodka/claude-plugins/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/voyvodka/claude-plugins/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/voyvodka/claude-plugins/compare/v2.1.4...v3.0.0
 [2.1.4]: https://github.com/voyvodka/claude-plugins/compare/v2.1.3...v2.1.4
