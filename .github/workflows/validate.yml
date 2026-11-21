@@ -4,9 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  # The validate steps run the current CLI, and the CLI changes weekly while this catalog
-  # can sit for a month. Without a schedule a new CLI that stops loading the catalog or a
-  # pinned plugin goes unnoticed until the next push.
+  # Weekly: validate runs the current CLI, which gets releases without a push here.
   schedule:
     - cron: '29 6 * * 1'
   workflow_dispatch:
@@ -51,8 +49,7 @@ jobs:
             if ! git clone --depth 1 --branch "$ref" "$url" "$work"; then
               echo "::error::$name: cannot clone $url at ref $ref"; fail=1; echo "::endgroup::"; continue
             fi
-            # Claude Code checks out `sha` when both are set, so a tag that was moved after the
-            # pin would leave `ref` naming one commit and the install fetching another.
+            # Claude Code installs `sha` when both are set, so a tag moved after the pin must fail here.
             if [ "$sha" = "-" ]; then
               echo "::error::$name: source has no sha beside ref $ref"; fail=1
             elif [ "$(git -C "$work" rev-parse HEAD)" != "$sha" ]; then
