@@ -8,6 +8,19 @@ its own repository.
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-11-21
+
+### Added
+
+- Each source carries the release tag's commit as `sha` beside `ref`; CI fails when the two disagree (#17)
+- CI runs weekly as well as on push, so a new Claude Code release is checked without a commit (#17)
+
+### Changed
+
+- Pinned to `project-flow` v3.3.0, where the command becomes `/project-flow` (#17)
+- Pinned to `site-triage` v1.2.0 (#17)
+- The README quotes the message a renamed plugin shows, next to its error name (#17)
+
 ## [3.0.5] - 2026-10-25
 
 ### Changed
@@ -144,7 +157,8 @@ its own repository.
 - `$schema` in `marketplace.json` now points at the SchemaStore entry instead of a marketing page.
 - The README plugin table now quotes `marketplace.json` verbatim.
 
-[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v3.0.5...HEAD
+[Unreleased]: https://github.com/voyvodka/claude-plugins/compare/v3.1.0...HEAD
+[3.1.0]: https://github.com/voyvodka/claude-plugins/compare/v3.0.5...v3.1.0
 [3.0.5]: https://github.com/voyvodka/claude-plugins/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/voyvodka/claude-plugins/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/voyvodka/claude-plugins/compare/v3.0.2...v3.0.3

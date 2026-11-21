@@ -22,8 +22,9 @@ it added. That form needs Claude Code 2.1.275 or later (from the shell, `claude 
 
 Then `/plugin marketplace update voyvodka` to pick up new entries.
 
-Each entry is pinned to a release tag, so an update gives you a version that was tagged and
-released, not whatever `main` held at that moment. CI clones every source at its pinned ref and
+Each entry is pinned to a release tag and to that tag's commit (`ref` and `sha`), so an update
+gives you a version that was tagged and released, not whatever `main` held at that moment, and a
+tag moved afterwards cannot change what is installed. CI clones every source at its pinned ref and
 validates the plugin there, so a broken `path` fails here rather than at install time.
 
 Each entry resolves to a subdirectory of the plugin's own repository.
@@ -40,7 +41,8 @@ what `/plugin` shows. Change one and change the other.
 
 > **`project` was renamed to `project-flow` in 3.0.0.** The catalog carries a `renames` entry, so
 > Claude Code v2.1.193+ rewrites your settings and tells you it did. The source is remote, so expect
-> one `plugin-cache-miss` and a single `/plugin install`.
+> `Plugin "project-flow" not cached at <path>` in the `/plugin` Errors tab once (the
+> `plugin-cache-miss` error) and a single `/plugin install`.
 
 ## Why a separate catalog
 
