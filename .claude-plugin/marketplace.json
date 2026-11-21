@@ -29,9 +29,10 @@
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/claude-project-flow.git",
         "path": "plugins/project-flow",
-        "ref": "v3.2.2"
+        "ref": "v3.3.0",
+        "sha": "cf23700bd1b8291b8f6f037e1674a352ca70c3bb"
       },
-      "version": "3.2.2",
+      "version": "3.3.0",
       "strict": true
     },
     {
@@ -57,9 +58,10 @@
         "source": "git-subdir",
         "url": "https://github.com/voyvodka/site-triage.git",
         "path": "plugins/site-triage",
-        "ref": "v1.1.2"
+        "ref": "v1.2.0",
+        "sha": "d3c9f2a67669ec8d67be36e8f7be18589b2e0765"
       },
-      "version": "1.1.2",
+      "version": "1.2.0",
       "strict": true
     }
   ],

@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
+  # The validate steps run the current CLI, and the CLI changes weekly while this catalog
+  # can sit for a month. Without a schedule a new CLI that stops loading the catalog or a
+  # pinned plugin goes unnoticed until the next push.
+  schedule:
+    - cron: '29 6 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -33,17 +39,24 @@ jobs:
           import json
           for e in json.load(open('.claude-plugin/marketplace.json'))['plugins']:
               s = e['source']
-              print(e['name'], e.get('version','-'), s['url'], s['path'], s.get('ref','HEAD'))
+              print(e['name'], e.get('version','-'), s['url'], s['path'], s.get('ref','HEAD'), s.get('sha','-'))
           PY
 
           fail=0
           # Redirected from a file, not piped: a pipe would run the loop in a subshell
           # and every fail=1 set inside it would be discarded at the end.
-          while read -r name version url path ref; do
+          while read -r name version url path ref sha; do
             echo "::group::$name @ $ref"
             work=$(mktemp -d)
             if ! git clone --depth 1 --branch "$ref" "$url" "$work"; then
               echo "::error::$name: cannot clone $url at ref $ref"; fail=1; echo "::endgroup::"; continue
+            fi
+            # Claude Code checks out `sha` when both are set, so a tag that was moved after the
+            # pin would leave `ref` naming one commit and the install fetching another.
+            if [ "$sha" = "-" ]; then
+              echo "::error::$name: source has no sha beside ref $ref"; fail=1
+            elif [ "$(git -C "$work" rev-parse HEAD)" != "$sha" ]; then
+              echo "::error::$name: ref $ref is at $(git -C "$work" rev-parse HEAD), sha says $sha"; fail=1
             fi
             if [ ! -d "$work/$path" ]; then
               echo "::error::$name: source path '$path' does not exist in $url@$ref"; fail=1; echo "::endgroup::"; continue
