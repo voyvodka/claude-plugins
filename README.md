@@ -39,7 +39,8 @@ Each entry is pinned to a release tag and to that tag's commit (`ref` and `sha`)
 gives you a version that was tagged and released, not whatever `main` held at that moment, and a
 tag moved afterwards cannot change what is installed. CI clones every source at its pinned ref and
 validates the plugin there, so a broken `path` fails here rather than at install time. A plugin
-release reaches you only once its pin here moves to it.
+release reaches you only once its pin here moves to it; the `pin-bump` workflow checks each
+plugin's latest release daily and proposes the move as a pull request.
 
 Each entry resolves to a subdirectory of the plugin's own repository.
 
