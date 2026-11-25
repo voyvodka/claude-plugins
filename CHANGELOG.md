@@ -8,6 +8,10 @@ its own repository.
 
 ## [Unreleased]
 
+### Added
+
+- README: how to turn on auto-update for this catalog, which Claude Code leaves off for third-party marketplaces, and how to update by hand
+
 ## [3.1.0] - 2026-11-21
 
 ### Added

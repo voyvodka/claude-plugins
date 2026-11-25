@@ -20,12 +20,26 @@ it added. That form needs Claude Code 2.1.275 or later (from the shell, `claude 
 /plugin install site-triage@voyvodka
 ```
 
-Then `/plugin marketplace update voyvodka` to pick up new entries.
+## Updates
+
+Claude Code leaves background auto-update **off** for third-party marketplaces like this one, and
+the catalog cannot turn it on for you. To have new releases arrive by themselves, run `/plugin`, open
+the **Marketplaces** tab, select `voyvodka` and turn on auto-update. Updates then land shortly after a
+session starts; run `/reload-plugins` when Claude Code says a plugin was updated, or start a new
+session.
+
+Without it, update by hand: **Marketplaces** › `voyvodka` › **Update marketplace** in `/plugin`
+updates every plugin installed from this catalog, and `claude plugin update project-flow@voyvodka`
+updates one from the shell. A bare `claude plugin marketplace update` refreshes the listing only and
+leaves installed plugins where they are. See
+[Keep plugins updated](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated)
+(checked 2026-11-25).
 
 Each entry is pinned to a release tag and to that tag's commit (`ref` and `sha`), so an update
 gives you a version that was tagged and released, not whatever `main` held at that moment, and a
 tag moved afterwards cannot change what is installed. CI clones every source at its pinned ref and
-validates the plugin there, so a broken `path` fails here rather than at install time.
+validates the plugin there, so a broken `path` fails here rather than at install time. A plugin
+release reaches you only once its pin here moves to it.
 
 Each entry resolves to a subdirectory of the plugin's own repository.
 
