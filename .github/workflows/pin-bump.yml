@@ -8,7 +8,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  issues: write
   actions: write
 
 concurrency:
@@ -36,7 +35,7 @@ jobs:
             echo 'moved<<EOF'; echo "$moved"; echo 'EOF'
           } >> "$GITHUB_OUTPUT"
 
-      - name: Open a pull request, or an issue when Actions may not open one
+      - name: Open a pull request
         if: steps.bump.outputs.branch != ''
         env:
           GH_TOKEN: ${{ github.token }}
@@ -45,7 +44,7 @@ jobs:
           MOVED: ${{ steps.bump.outputs.moved }}
         run: |
           if git ls-remote --exit-code origin "refs/heads/$BRANCH" >/dev/null; then
-            echo "$BRANCH already exists; its pull request or issue is still open"; exit 0
+            echo "$BRANCH already exists; its pull request is still open"; exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -54,12 +53,8 @@ jobs:
           git commit -m "$TITLE"
           git push origin "$BRANCH"
           body=$(printf 'Moves catalog pins to the latest plugin releases (plugin, old ref, new ref):\n\n```\n%s\n```\n\nRelease a new catalog version after merging.' "$MOVED")
-          if gh pr create --head "$BRANCH" --title "$TITLE" --body "$body" --label dependencies; then
-            # A pull request opened with GITHUB_TOKEN starts no pull_request workflows, so the
-            # required `manifest` check is run on the branch by dispatch instead.
-            gh workflow run validate.yml --ref "$BRANCH"
-          else
-            compare="https://github.com/${GITHUB_REPOSITORY}/compare/main...${BRANCH}?expand=1"
-            gh issue create --title "$TITLE" --label dependencies \
-              --body "$(printf '%s\n\nThis repository does not let Actions open pull requests, so the change waits on branch `%s`: [open the pull request](%s).' "$body" "$BRANCH" "$compare")"
-          fi
+          # Needs "Allow GitHub Actions to create and approve pull requests" in the repository settings.
+          gh pr create --head "$BRANCH" --title "$TITLE" --body "$body" --label dependencies
+          # A pull request opened with GITHUB_TOKEN gets its pull_request runs in an approval-required
+          # state; workflow_dispatch always runs, so the required `manifest` check runs from here.
+          gh workflow run validate.yml --ref "$BRANCH"

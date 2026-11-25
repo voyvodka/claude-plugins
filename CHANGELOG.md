@@ -11,7 +11,7 @@ its own repository.
 ### Added
 
 - README: how to turn on auto-update for this catalog, which Claude Code leaves off for third-party marketplaces, and how to update by hand
-- `pin-bump` workflow: daily, and on demand, it moves a pin to the plugin's latest GitHub release and opens a pull request — or, while Actions may not open pull requests here, an issue linking the prepared branch
+- `pin-bump` workflow: daily, and on demand, it moves a pin to the plugin's latest GitHub release and opens a pull request (#20, #21)
 
 ## [3.1.0] - 2026-11-21
 
