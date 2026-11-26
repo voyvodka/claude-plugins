@@ -13,6 +13,11 @@ its own repository.
 - README: how to turn on auto-update for this catalog, which Claude Code leaves off for third-party marketplaces, and how to update by hand
 - `pin-bump` workflow: daily, and on demand, it moves a pin to the plugin's latest GitHub release and opens a pull request (#20, #21)
 
+### Changed
+
+- Pinned to `project-flow` v4.0.0
+- Pinned to `site-triage` v1.3.0
+
 ## [3.1.0] - 2026-11-21
 
 ### Added
